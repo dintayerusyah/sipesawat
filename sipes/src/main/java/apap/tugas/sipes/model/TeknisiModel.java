@@ -25,6 +25,14 @@ public class TeknisiModel implements Serializable{
     @ManyToMany(mappedBy = "listTeknisi")
     private List<PesawatModel> listPesawat;
 
+    public List<PesawatModel> getListPesawat() {
+        return this.listPesawat;
+    }
+
+    public void setListPesawat(List<PesawatModel> listPesawat) {
+        this.listPesawat = listPesawat;
+    }
+
     public Long getId() {
         return this.id;
     }

@@ -109,12 +109,28 @@ public class PesawatModel implements Serializable{
         this.jenisPesawat = jenisPesawat;
     }
 
-    public TipeModel getTipeModel() {
-        return this.tipeModel;
+    public TipeModel getTipe() {
+        return this.tipe;
     }
 
-    public void setTipeModel(TipeModel tipeModel) {
-        this.tipeModel = tipeModel;
+    public void setTipe(TipeModel tipe) {
+        this.tipe = tipe;
+    }
+
+    public List<PenerbanganModel> getListPenerbangan() {
+        return this.listPenerbangan;
+    }
+
+    public void setListPenerbangan(List<PenerbanganModel> listPenerbangan) {
+        this.listPenerbangan = listPenerbangan;
+    }
+
+    public List<TeknisiModel> getListTeknisi() {
+        return this.listTeknisi;
+    }
+
+    public void setListTeknisi(List<TeknisiModel> listTeknisi) {
+        this.listTeknisi = listTeknisi;
     }
 
 }
