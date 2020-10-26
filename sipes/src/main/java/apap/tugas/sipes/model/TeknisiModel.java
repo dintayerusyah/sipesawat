@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 import java.util.List;
 
+@Entity
+@Table(name = "teknisi")
 public class TeknisiModel implements Serializable{
     @Id
     @Size(max = 20)
