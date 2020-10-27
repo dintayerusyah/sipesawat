@@ -1,0 +1,23 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#home{
+    background: url('https://s3.us-west-2.amazonaws.com/images.unsplash.com/application-1603780174642-c8da1a464023image') no-repeat 50% 50% ;
+    display: table;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+.landing-text{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+h3{
+    font-size: 170%;
+}
+.card{
+    opacity: 0.8;
+}
