@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pesawat|SIPES</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <br>
+    <div class="container-fluid">
+        <h1 style="text-align: center;">Daftar Pesawat</h1>
+        <br>
+        <section>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>Nomor Seri</th>
+                        <th>Tipe Pesawat</th>
+                        <th>Jenis Pesawat</th>
+                        <th>Maskapai</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pesawat, iterationStatus : ${daftarPesawat}">
+                        <td th:text="${iterationStatus.count}"></td>
+                        <td th:text="${pesawat.nomorSeri}"></td>
+                        <td th:text="${pesawat.tipe.nama}"></td>
+                        <td th:text="${pesawat.jenisPesawat}"></td>
+                        <td th:text="${pesawat.maskapai}"></td>
+                        <td>
+                            <a href="#" class="btn btn-info">Lihat</a>
+                            <a href="#" class="btn btn-warning">Ubah</a>
+                            <a href="#" class="btn btn-danger">Ubah</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    
+    <!-- <div class="container-fluid">
+        <div class="card" style="border-radius: 5px">
+            <h2>Daftar Pesawat</h2>
+            <p style="color: #bdbdbd;">test</p>
+        </div>
+    </div> -->
+</body>
+</html>
