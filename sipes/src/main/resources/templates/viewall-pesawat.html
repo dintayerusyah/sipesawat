@@ -35,22 +35,14 @@
                         <td th:if="${pesawat.jenisPesawat == '2'}" th:text="Militer"></td>
                         <td th:text="${pesawat.maskapai}"></td>
                         <td>
-                            <a href="#" class="btn btn-info">Lihat</a>
+                            <a th:href="@{/pesawat/} + ${pesawat.id}" class="btn btn-info">Lihat</a>
                             <a href="#" class="btn btn-warning">Ubah</a>
-                            <a href="#" class="btn btn-danger">Ubah</a>
+                            <a href="#" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </section>
     </div>
-    
-    
-    <!-- <div class="container-fluid">
-        <div class="card" style="border-radius: 5px">
-            <h2>Daftar Pesawat</h2>
-            <p style="color: #bdbdbd;">test</p>
-        </div>
-    </div> -->
 </body>
 </html>

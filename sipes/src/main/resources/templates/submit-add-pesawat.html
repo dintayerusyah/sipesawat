@@ -8,7 +8,8 @@
 </head>
 <body>
     <nav th:replace="fragments/fragment :: navbar"></nav>
-    <h2 th:text="'Pesawat ' + ${pesawat.maskapai} + ' dengan nomor seri ' + ${pesawat.nomorSeri} + ' berhasil ditambahkan'"></h2>
-    <a th:href="@{/pesawat}"></a>
+    <br><br>
+    <h2 th:text="'Pesawat ' + ${pesawat.maskapai} + ' dengan nomor seri ' + ${pesawat.nomorSeri} + ' berhasil ditambahkan'" style="text-align: center;"></h2>
+    <a th:href="@{/pesawat}" style="color: dodgerblue;">Kembali ke Daftar Pesawat</a>
 </body>
 </html>

@@ -77,4 +77,18 @@ public class PesawatController {
         model.addAttribute("daftarTeknisi", teknisiService.getTeknisiList());
         return "form-add-pesawat";
     }
+
+    @GetMapping("/pesawat/{id}")
+    public String viewPesawat(
+        @PathVariable Long id, Model model
+    ){
+        try{
+            PesawatModel pesawat = pesawatService.getPesawatById(id);
+            model.addAttribute("pesawat", pesawat);
+            return "view-pesawat";
+        }
+        catch(Exception NoSuchElementException){
+            return "resep-not-found";
+        }
+    }
 }

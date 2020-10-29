@@ -64,4 +64,9 @@ public class PesawatServiceImpl implements PesawatService{
         nomorSeri = jenisPesawat + tipePesawat + tahunPesawatA + tahunPesawatB + random;
         return nomorSeri;
     }
+
+    @Override
+    public PesawatModel getPesawatById(Long id){
+        return pesawatDb.findById(id).get();
+    }
 }

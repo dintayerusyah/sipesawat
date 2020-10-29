@@ -14,4 +14,6 @@ public interface PesawatService {
     List<PesawatModel> getPesawatList();
 
     // void deletePesawat(PesawatModel pesawat);
+
+    PesawatModel getPesawatById(Long id);
 }
