@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Tambah Pesawat | SIPES</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <br><br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mx-auto col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="text-align: center;">Form Tambah Pesawat</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="form" th:action="@{/pesawat/tambah}" th:object="${pesawat}" method="POST">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label form-control-label">Maskapai</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="maskapai">
+                                </div>
+                            </div> 
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label form-control-label">Tanggal Dibuat</label>
+                                <div class="col-sm-6">
+                                    <input type="date" class="form-control" name="tanggalDibuat">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label form-control-label">Tempat Dibuat</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="tempatDibuat">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label form-control-label">Jenis</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="jenisPesawat">
+                                        <option value="1">Komersial</option>
+                                        <option value="2">Militer</option>
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label form-control-label">Tipe</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" th:field="*{tipe}">
+                                        <option th:each="tipe : ${daftarTipe}" th:value="${tipe.id}" th:text="${tipe.nama}"></option>
+                                    </select>
+                                </div>
+                            </div>   
+                            <div class="form-group row" th:each="teknisiRow, rowStat : *{listTeknisi}">
+                                <label class="col-sm-3 col-form-label form-control-label">Teknisi</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" th:field="*{listTeknisi[__${rowStat.index}__]}">
+                                        <option th:each="teknisi : ${daftarTeknisi}" th:value="${teknisi.id}" th:text="${teknisi.nama}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3"></div>
+                                <button class="col-sm-9 btn btn-light" style="border-color: #bdbdbd;" type="submit" name="addRow">
+                                    + Tambah Teknisi
+                                </button>
+                            </div> 
+                            <br>
+                            <div class="col-lg-12 text-center">
+                                <a th:href="@{/pesawat}" class="btn btn-light mr-2" style="border-color: #bdbdbd;">Batal</a>
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    name="save"
+                                >
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div><br>
+            </div>
+        </div>     
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -18,7 +18,6 @@ import java.util.List;
 @Table(name = "pesawat")
 public class PesawatModel implements Serializable{
     @Id
-    @Size(max = 20)
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,7 +35,7 @@ public class PesawatModel implements Serializable{
     private String tempatDibuat;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "tanggal_dibuat", nullable = false)
     private LocalDate tanggalDibuat;
 

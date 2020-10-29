@@ -12,7 +12,6 @@ import java.util.List;
 @Table(name = "teknisi")
 public class TeknisiModel implements Serializable{
     @Id
-    @Size(max = 20)
     @Column(name = "id")
     private Long id;
 

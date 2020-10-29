@@ -5,7 +5,9 @@ import apap.tugas.sipes.model.PesawatModel;
 import java.util.List;
 
 public interface PesawatService {
-    // void addPesawat(PesawatModel pesawat);
+    void addPesawat(PesawatModel pesawat);
+
+    String generateNomorSeri(PesawatModel pesawat);
 
     // void updatePesawat(PesawatModel pesawat);
 

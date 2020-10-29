@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Table(name = "penerbangan")
 public class PenerbanganModel implements Serializable{
     @Id
-    @Size(max = 20)
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
