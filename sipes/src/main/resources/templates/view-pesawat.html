@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Pesawat | SIPES</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <br><br>
+    <h2 style="text-align: center;">Detail Pesawat</h2>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Nomor Seri Pesawat</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:text="${pesawat.nomorSeri}"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Jenis Pesawat</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:if="${pesawat.jenisPesawat == '1'}" th:text="Komersial"></p>
+                <p th:if="${pesawat.jenisPesawat == '2'}" th:text="Militer"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Nama Tipe Pesawat</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:text="${pesawat.tipe.nama}"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Maskapai</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:text="${pesawat.maskapai}"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Tempat Dibuat</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:text="${pesawat.tempatDibuat}"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+                <p style="font-weight: bold;">Tanggal Dibuat</p>
+            </div>
+            <div class="col-sm-2">
+                <p th:text="${pesawat.tanggalDibuat}"></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm-4"></div>
+           <div class="col-sm-4">
+               <table class="table table-hover">
+                   <thead class="thead-dark">
+                       <tr>
+                           <th>No</th>
+                           <th>Nama</th>
+                           <th>Nomor Telepon</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                        <tr th:each="teknisi, iterationsStatus : ${pesawat.listTeknisi}">
+                            <td th:text="${iterationsStatus.count}"></td>
+                            <td th:text="${teknisi.nama}"></td>
+                            <td th:text="'0' + ${teknisi.nomorTelepon}"></td>
+                        </tr>
+                   </tbody>
+               </table>
+           </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
