@@ -7,9 +7,9 @@ import java.util.List;
 public interface PenerbanganService {
     void addPenerbangan(PenerbanganModel penerbangan);
 
-    void updatePenerbangan(PenerbanganModel penerbangan);
+    // void updatePenerbangan(PenerbanganModel penerbangan);
 
     List<PenerbanganModel> getPenerbanganList();
 
-    void deletePenerbangan(PenerbanganModel penerbangan);
+    // void deletePenerbangan(PenerbanganModel penerbangan);
 }
