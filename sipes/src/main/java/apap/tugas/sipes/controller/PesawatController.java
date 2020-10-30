@@ -85,7 +85,7 @@ public class PesawatController {
             return "view-pesawat";
         }
         catch(Exception NoSuchElementException){
-            return "resep-not-found";
+            return "not-found";
         }
     }
 

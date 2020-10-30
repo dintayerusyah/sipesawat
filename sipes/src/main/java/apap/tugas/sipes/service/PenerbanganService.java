@@ -12,4 +12,6 @@ public interface PenerbanganService {
     List<PenerbanganModel> getPenerbanganList();
 
     // void deletePenerbangan(PenerbanganModel penerbangan);
+
+    PenerbanganModel getPenerbanganById (Long id); 
 }

@@ -21,4 +21,19 @@ public class PenerbanganController {
         model.addAttribute("daftarPenerbangan", penerbanganService.getPenerbanganList());
         return "viewall-penerbangan";
     }
+
+    @GetMapping("/penerbangan/{id}")
+    public String viewPenerbangan(
+        @PathVariable Long id, Model model
+    ){
+        try{
+            PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(id);
+            model.addAttribute("penerbangan", penerbangan);
+            return "view-penerbangan";
+        }
+        catch(Exception NoSuchElementException){
+            return "not-found";
+        }
+        
+    }
 }
