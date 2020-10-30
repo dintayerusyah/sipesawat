@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesawat Berhasil Diupdate | SIPES</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <br><br>
+    <h2 th:text="'Data pesawat ' + ${pesawat.maskapai} + ' dengan nomor seri ' + ${pesawat.nomorSeri} + ' berhasil diperbarui'" style="text-align: center;"></h2>
+    <a th:href="@{/pesawat}" style="color: dodgerblue; text-align: center;">Kembali ke Daftar Pesawat</a>
+</body>
+</html>

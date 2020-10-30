@@ -91,4 +91,25 @@ public class PesawatController {
             return "resep-not-found";
         }
     }
+
+    @GetMapping("/pesawat/ubah/{id}")
+    public String updatePesawat(
+        @PathVariable Long id,
+        Model model
+    ){
+        PesawatModel pesawat = pesawatService.getPesawatById(id);
+        model.addAttribute("pesawat", pesawat);
+        return "form-update-pesawat";
+    }
+
+    @PostMapping("/pesawat/ubah")
+    public String submitUpdatePesawat(
+        @ModelAttribute PesawatModel pesawat, Model model
+    ){
+        String nomorSeri = pesawatService.generateNomorSeri(pesawat);
+        pesawat.setNomorSeri(nomorSeri);
+        PesawatModel updatedPesawat = pesawatService.updatePesawat(pesawat);  
+        model.addAttribute("pesawat", updatedPesawat);
+        return "submit-update-pesawat";
+    }
 }

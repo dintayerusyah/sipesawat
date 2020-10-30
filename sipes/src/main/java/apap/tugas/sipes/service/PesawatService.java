@@ -9,7 +9,7 @@ public interface PesawatService {
 
     String generateNomorSeri(PesawatModel pesawat);
 
-    // void updatePesawat(PesawatModel pesawat);
+    PesawatModel updatePesawat(PesawatModel pesawat);
 
     List<PesawatModel> getPesawatList();
 
