@@ -10,9 +10,6 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.ArrayList;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 public class PesawatController {
