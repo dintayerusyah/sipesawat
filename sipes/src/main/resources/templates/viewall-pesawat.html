@@ -37,7 +37,7 @@
                         <td>
                             <a th:href="@{/pesawat/} + ${pesawat.id}" class="btn btn-info">Lihat</a>
                             <a th:href="@{/pesawat/ubah/} + ${pesawat.id}" class="btn btn-warning">Ubah</a>
-                            <a href="#" class="btn btn-danger">Hapus</a>
+                            <a th:href="@{/pesawat/hapus/} + ${pesawat.id}" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 </tbody>

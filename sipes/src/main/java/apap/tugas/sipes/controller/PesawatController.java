@@ -131,4 +131,16 @@ public class PesawatController {
         model.addAttribute("listTotalTeknisi", listTotalTeknisi);
         return "bonus";
     }
+
+    @GetMapping("pesawat/hapus/{id}")
+    public String deletePesawat(
+        @PathVariable Long id,
+        Model model
+    ){
+        PesawatModel pesawat = pesawatService.getPesawatById(id);
+        model.addAttribute("title", "Pesawat Dihapus!");
+        model.addAttribute("pesawatMessage", "Penerbangan " + pesawat.getMaskapai() + " dengan nomor seri " + pesawat.getNomorSeri() + " berhasil dihapus.");
+        pesawatService.deletePesawat(pesawat);
+        return "submit-message-penerbangan";
+    }
 }

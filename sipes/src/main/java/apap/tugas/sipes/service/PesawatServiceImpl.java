@@ -124,4 +124,9 @@ public class PesawatServiceImpl implements PesawatService{
         }
         return listSumTeknisi;
     }
+
+    @Override
+    public void deletePesawat(PesawatModel pesawat){
+        pesawatDb.delete(pesawat);
+    }
 }
