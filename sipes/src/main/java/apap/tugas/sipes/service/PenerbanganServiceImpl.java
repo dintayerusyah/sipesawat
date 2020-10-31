@@ -29,4 +29,9 @@ public class PenerbanganServiceImpl implements PenerbanganService{
     public PenerbanganModel getPenerbanganById (Long id){
         return penerbanganDb.findById(id).get();
     }
+
+    @Override
+    public boolean checkPenerbanganByNomorPenerbangan(String nomorPenerbangan){
+        return penerbanganDb.existsByNomorPenerbangan(nomorPenerbangan);
+    }
 }

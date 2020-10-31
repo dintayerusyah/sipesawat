@@ -36,4 +36,29 @@ public class PenerbanganController {
         }
         
     }
+
+    @GetMapping("/penerbangan/tambah")
+    public String formTambahPenerbangan(
+        Model model
+    ){
+        model.addAttribute("penerbangan", new PenerbanganModel());
+        return "form-add-penerbangan";
+    }
+
+    @PostMapping("penerbangan/tambah")
+    public String submitFormTambahPenerbangan(
+        @ModelAttribute PenerbanganModel penerbangan,
+        Model model
+    ){
+        // Jika nomor penerbangan sudah terdaftar, gagal menyimpan data
+        if (penerbanganService.checkPenerbanganByNomorPenerbangan(penerbangan.getNomorPenerbangan())){
+            model.addAttribute("errorMessage", "Penerbangan dengan nomor " + penerbangan.getNomorPenerbangan() + " sudah terdaftar.");
+            return "submit-failed-penerbangan";
+        }
+        else{
+            penerbanganService.addPenerbangan(penerbangan);
+            model.addAttribute("penerbangan", penerbangan);
+            return "submit-add-penerbangan";
+        }
+    }
 }

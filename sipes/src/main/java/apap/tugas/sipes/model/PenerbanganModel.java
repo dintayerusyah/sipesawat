@@ -2,15 +2,16 @@ package apap.tugas.sipes.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Null;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "penerbangan")
@@ -30,14 +31,15 @@ public class PenerbanganModel implements Serializable{
 
     @NotNull
     @Column(name = "waktu_berangkat", nullable = false)
-    private LocalDateTime waktuBerangkat;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate waktuBerangkat;
 
     @NotNull
     @Column(name = "nomor_penerbangan", nullable = false, unique = true)
     private String nomorPenerbangan;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_pesawat", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @JoinColumn(name = "id_pesawat", referencedColumnName = "id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private PesawatModel pesawat;
@@ -66,11 +68,11 @@ public class PenerbanganModel implements Serializable{
         this.kodeBandaraTujuan = kodeBandaraTujuan;
     }
 
-    public LocalDateTime getWaktuBerangkat() {
+    public LocalDate getWaktuBerangkat() {
         return this.waktuBerangkat;
     }
 
-    public void setWaktuBerangkat(LocalDateTime waktuBerangkat) {
+    public void setWaktuBerangkat(LocalDate waktuBerangkat) {
         this.waktuBerangkat = waktuBerangkat;
     }
 

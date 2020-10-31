@@ -13,5 +13,7 @@ public interface PenerbanganService {
 
     // void deletePenerbangan(PenerbanganModel penerbangan);
 
-    PenerbanganModel getPenerbanganById (Long id); 
+    PenerbanganModel getPenerbanganById (Long id);
+
+    boolean checkPenerbanganByNomorPenerbangan(String nomorPenerbangan);
 }
