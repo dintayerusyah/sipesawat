@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 import apap.tugas.sipes.model.PesawatModel;
 import apap.tugas.sipes.repository.PesawatDb;
 
+import java.util.Calendar;
+import java.time.LocalDate;
+import java.util.Date;
+import java.time.ZoneId;
+import java.util.ArrayList;
+
 @Service
 @Transactional
 public class PesawatServiceImpl implements PesawatService{
@@ -75,5 +81,34 @@ public class PesawatServiceImpl implements PesawatService{
         pesawatDb.save(pesawat);
 
         return pesawat;
+    }
+
+    @Override
+    public List<PesawatModel> getPesawatTua(LocalDate tanggalSekarang){
+        Calendar cal = Calendar.getInstance();
+        Date today = cal.getTime();
+        cal.add(Calendar.YEAR, -10);
+        Date previousYear = cal.getTime();
+        LocalDate tenYearsAgo = convertToLocalDateViaInstant(previousYear);
+        return pesawatDb.findAllWithTanggalDibuatBefore(tenYearsAgo);
+    }
+
+    public LocalDate convertToLocalDateViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant()
+          .atZone(ZoneId.systemDefault())
+          .toLocalDate();
+    }
+
+    @Override
+    public List<Integer> getAges(List<PesawatModel> daftarPesawat){
+        List<Integer> daftarUmur = new ArrayList<Integer>();
+        int curYear = LocalDate.now().getYear();
+        Integer total = 0;
+        for (PesawatModel pesawat : daftarPesawat){
+            int year = pesawat.getTanggalDibuat().getYear();
+            daftarUmur.add(total, curYear-year);
+            total = total+1;
+        }
+        return daftarUmur;
     }
 }

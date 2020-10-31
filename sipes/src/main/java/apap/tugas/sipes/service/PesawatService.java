@@ -3,6 +3,7 @@ package apap.tugas.sipes.service;
 import apap.tugas.sipes.model.PesawatModel;
 
 import java.util.List;
+import java.time.LocalDate;
 
 public interface PesawatService {
     void addPesawat(PesawatModel pesawat);
@@ -16,4 +17,8 @@ public interface PesawatService {
     // void deletePesawat(PesawatModel pesawat);
 
     PesawatModel getPesawatById(Long id);
+
+    List<PesawatModel> getPesawatTua(LocalDate tanggalSekarang);
+
+    List<Integer> getAges(List<PesawatModel> daftarPesawat)
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 @Controller
 public class PesawatController {
@@ -108,5 +109,15 @@ public class PesawatController {
         PesawatModel updatedPesawat = pesawatService.updatePesawat(pesawat);  
         model.addAttribute("pesawat", updatedPesawat);
         return "submit-update-pesawat";
+    }
+
+    @GetMapping("/pesawat/pesawat-tua")
+    public String viewPesawatTua(
+        Model model
+    ){
+        List<PesawatModel> daftarPesawatTua = pesawatService.getPesawatTua(LocalDate.now());
+        model.addAttribute("daftarPesawatTua", daftarPesawatTua);
+        model.addAttribute("daftarUsia", pesawatService.getAges(daftarPesawatTua));
+        return "viewall-pesawat-tua";
     }
 }
