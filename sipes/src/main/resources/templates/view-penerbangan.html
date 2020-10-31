@@ -58,8 +58,8 @@
                 <p style="font-weight: bold;">Nomor Seri Pesawat</p>
             </div>
             <div class="col-sm-2">
-                <p th:if="${penerbangan.pesawat != null}" th:text="${penerbangan.pesawat.nomorSeri}"></p>
-                <p th:unless="${penerbangan.pesawat != null}" th:text="Belum diassign pesawat"></p>
+                <p th:if="${penerbangan.pesawat == null}">Belum diassign pesawat</p>
+                <p th:unless="${penerbangan.pesawat == null}" th:text="${penerbangan.pesawat.nomorSeri}"></p>
             </div>
             <div class="col-sm-4"></div>
         </div>
