@@ -3,15 +3,16 @@ package apap.tugas.sipes.service;
 import apap.tugas.sipes.model.PenerbanganModel;
 
 import java.util.List;
+import java.time.LocalDate;
 
 public interface PenerbanganService {
     void addPenerbangan(PenerbanganModel penerbangan);
 
-    // void updatePenerbangan(PenerbanganModel penerbangan);
+    PenerbanganModel updatePenerbangan(Long id, PenerbanganModel penerbangan);
 
     List<PenerbanganModel> getPenerbanganList();
 
-    // void deletePenerbangan(PenerbanganModel penerbangan);
+    void deletePenerbangan(PenerbanganModel penerbangan);
 
     PenerbanganModel getPenerbanganById (Long id);
 

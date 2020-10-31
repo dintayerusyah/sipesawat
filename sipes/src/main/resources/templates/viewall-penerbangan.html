@@ -36,7 +36,7 @@
                         <td>
                             <a th:href="@{/penerbangan/} + ${penerbangan.id}" class="btn btn-info">Lihat</a>
                             <a th:href="@{/penerbangan/ubah/} + ${penerbangan.id}" class="btn btn-warning">Ubah</a>
-                            <a href="#" class="btn btn-danger">Hapus</a>
+                            <a th:href="@{/penerbangan/hapus/} + ${penerbangan.id}" class="btn btn-danger">Hapus</a>
                         </td>
                     </tr>
                 </tbody>
