@@ -21,4 +21,6 @@ public interface PesawatService {
     List<PesawatModel> getPesawatTua(LocalDate tanggalSekarang);
 
     List<Integer> getAges(List<PesawatModel> daftarPesawat);
+
+    List<Integer> getSumTeknisi(List<PesawatModel> daftarPesawat);
 }

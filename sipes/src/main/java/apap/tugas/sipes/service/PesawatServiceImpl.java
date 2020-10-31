@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import apap.tugas.sipes.model.PesawatModel;
+import apap.tugas.sipes.model.TeknisiModel;
 import apap.tugas.sipes.repository.PesawatDb;
 
 import java.util.Calendar;
@@ -110,5 +111,17 @@ public class PesawatServiceImpl implements PesawatService{
             total = total+1;
         }
         return daftarUmur;
+    }
+
+    @Override
+    public List<Integer> getSumTeknisi(List<PesawatModel> daftarPesawat){
+        List<Integer> listSumTeknisi = new ArrayList<Integer>();
+        Integer total = 0;
+        for (PesawatModel pesawat : daftarPesawat){
+            Integer totalTeknisi = pesawat.getListTeknisi().size();
+            listSumTeknisi.add(total, totalTeknisi);
+            total = total+1;
+        }
+        return listSumTeknisi;
     }
 }

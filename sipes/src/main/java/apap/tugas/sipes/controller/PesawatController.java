@@ -120,4 +120,15 @@ public class PesawatController {
         model.addAttribute("daftarUsia", pesawatService.getAges(daftarPesawatTua));
         return "viewall-pesawat-tua";
     }
+
+    @GetMapping("/bonus")
+    public String bonus(
+        Model model
+    ){
+        List<PesawatModel> daftarPesawat = pesawatService.getPesawatList();
+        model.addAttribute("daftarPesawat", daftarPesawat);
+        List<Integer> listTotalTeknisi = pesawatService.getSumTeknisi(daftarPesawat);
+        model.addAttribute("listTotalTeknisi", listTotalTeknisi);
+        return "bonus";
+    }
 }
