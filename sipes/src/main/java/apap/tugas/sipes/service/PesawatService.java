@@ -1,6 +1,7 @@
 package apap.tugas.sipes.service;
 
 import apap.tugas.sipes.model.PesawatModel;
+import apap.tugas.sipes.model.PenerbanganModel;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -23,4 +24,6 @@ public interface PesawatService {
     List<Integer> getAges(List<PesawatModel> daftarPesawat);
 
     List<Integer> getSumTeknisi(List<PesawatModel> daftarPesawat);
+
+    void addPenerbangan(PesawatModel pesawat, PenerbanganModel penerbangan);
 }

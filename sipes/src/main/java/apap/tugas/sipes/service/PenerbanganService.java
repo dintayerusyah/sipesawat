@@ -1,6 +1,7 @@
 package apap.tugas.sipes.service;
 
 import apap.tugas.sipes.model.PenerbanganModel;
+import apap.tugas.sipes.model.PesawatModel;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -17,4 +18,6 @@ public interface PenerbanganService {
     PenerbanganModel getPenerbanganById (Long id);
 
     boolean checkPenerbanganByNomorPenerbangan(String nomorPenerbangan);
+
+    PenerbanganModel addPenerbanganToPesawat(PesawatModel pesawat, PenerbanganModel penerbangan);
 }

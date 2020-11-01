@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import apap.tugas.sipes.model.PesawatModel;
 import apap.tugas.sipes.model.PenerbanganModel;
 import apap.tugas.sipes.repository.PenerbanganDb;
 
@@ -45,6 +46,14 @@ public class PenerbanganServiceImpl implements PenerbanganService{
         target.setKodeBandaraTujuan(penerbangan.getKodeBandaraTujuan());
         target.setWaktuBerangkat(penerbangan.getWaktuBerangkat());
         target.setNomorPenerbangan(penerbangan.getNomorPenerbangan());
+        penerbanganDb.save(target);
+        return target;
+    }
+
+    @Override
+    public PenerbanganModel addPenerbanganToPesawat(PesawatModel pesawat, PenerbanganModel penerbangan){
+        PenerbanganModel target = penerbanganDb.findById(penerbangan.getId()).get();
+        target.setPesawat(pesawat);
         penerbanganDb.save(target);
         return target;
     }

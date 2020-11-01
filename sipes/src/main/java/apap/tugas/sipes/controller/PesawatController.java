@@ -23,6 +23,9 @@ public class PesawatController {
     @Autowired
     private TeknisiService teknisiService;
 
+    @Autowired
+    private PenerbanganService penerbanganService;
+
     // private List<TeknisiModel> teknisiRows = new ArrayList<TeknisiModel>();
 
     @GetMapping("/")
@@ -82,12 +85,41 @@ public class PesawatController {
     ){
         try{
             PesawatModel pesawat = pesawatService.getPesawatById(id);
+            List<PenerbanganModel> allPenerbangan = penerbanganService.getPenerbanganList();
             model.addAttribute("pesawat", pesawat);
+            model.addAttribute("allPenerbangan", allPenerbangan);
             return "view-pesawat";
         }
         catch(Exception NoSuchElementException){
             return "not-found";
         }
+    }
+
+    @RequestMapping(value="/pesawat/{id}/tambah-penerbangan", params={"idPenerbangan"}, method = RequestMethod.POST)
+    public String addPenerbanganToPesawat(
+        @PathVariable Long id, 
+        Model model,
+        @RequestParam("idPenerbangan")String idPenerbangan,
+        @ModelAttribute PesawatModel pesawat
+    ){
+        // PesawatModel pesawat = pesawatService.getPesawatById(id);
+        // Long flightId = Long.parseLong(idPenerbangan);
+        // PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(flightId);
+        // pesawatService.addPenerbangan(pesawat, penerbangan);
+        // PesawatModel updatedPesawat = pesawatService.getPesawatById(id);
+        // List<PenerbanganModel> allPenerbangan = penerbanganService.getPenerbanganList();
+        // model.addAttribute("allPenerbangan", allPenerbangan);
+        // model.addAttribute("pesawat", updatedPesawat);
+        // model.addAttribute("successMessage", "Penerbangan dengan nomor " + penerbangan.getNomorPenerbangan() + " berhasil ditambahkan.");
+
+        //Add atribut successMessage, pesawat (yang sudah diupdate), allPenerbangan
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganById(Long.parseLong(idPenerbangan));
+        PenerbanganModel addedPenerbangan = penerbanganService.addPenerbanganToPesawat(pesawat, penerbangan);
+        PesawatModel updatedPesawat = pesawatService.getPesawatById(id);
+        model.addAttribute("pesawat", updatedPesawat);
+        model.addAttribute("successMessage", "Penerbangan dengan nomor " + addedPenerbangan.getNomorPenerbangan() + " berhasil ditambahkan.");
+        model.addAttribute("allPenerbangan", penerbanganService.getPenerbanganList());
+        return "view-pesawat";
     }
 
     @GetMapping("/pesawat/ubah/{id}")

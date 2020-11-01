@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import apap.tugas.sipes.model.PenerbanganModel;
 import apap.tugas.sipes.model.PesawatModel;
 import apap.tugas.sipes.model.TeknisiModel;
 import apap.tugas.sipes.repository.PesawatDb;
@@ -128,5 +129,22 @@ public class PesawatServiceImpl implements PesawatService{
     @Override
     public void deletePesawat(PesawatModel pesawat){
         pesawatDb.delete(pesawat);
+    }
+
+    @Override
+    public void addPenerbangan(PesawatModel pesawat, PenerbanganModel penerbangan){
+        Long idPesawat = pesawat.getId();
+        PesawatModel target = pesawatDb.findById(idPesawat).get();
+        List<PenerbanganModel> listPenerbangan = pesawat.getListPenerbangan();
+        listPenerbangan.add(penerbangan);
+        target.setJenisPesawat(pesawat.getJenisPesawat());
+        target.setListPenerbangan(listPenerbangan);
+        target.setListTeknisi(pesawat.getListTeknisi());
+        target.setMaskapai(pesawat.getMaskapai());
+        target.setNomorSeri(pesawat.getNomorSeri());
+        target.setTanggalDibuat(pesawat.getTanggalDibuat());
+        target.setTempatDibuat(pesawat.getTempatDibuat());
+        target.setTipe(pesawat.getTipe());
+        pesawatDb.save(target);
     }
 }
